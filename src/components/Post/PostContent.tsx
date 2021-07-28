@@ -55,6 +55,9 @@ const MarkdownRenderer = styled.div`
   h3 {
     font-size: 20px;
   }
+  img {
+    max-width: 768px;
+  }
 
   // Adjust Quotation Element Style
   blockquote {

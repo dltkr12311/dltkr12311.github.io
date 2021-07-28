@@ -9,8 +9,7 @@ thumbnail: './image.png'
 ## Github Pages
 
 `gatsby` 를 이용해서 블로그를 만들었고 배포 하기 위해 Github Pages를 사용하기로 했다. (Github Pages는 github 에서 제공하는 정적 웹사이트 호스팅 서비스이다) 그럼 Github Pages를 만들고 배포하는 법을 정리해 보았다.
-먼저 Github Pages를 생성하려면 레퍼지토리를 만들어야 하는데 이름은 무조건 [**username].github.io로\*\* 만들어야 한다.
-
+먼저 Github Pages를 생성하려면 레퍼지토리를 만들어야 하는데 이름은 무조건 **[username].github.io**로 만들어야 한다.
 ![1](https://user-images.githubusercontent.com/60437099/127360912-8cf3abc4-9cdb-4612-9b3e-ee1b398e1008.png)
 
 이렇게 만들고, 자신의 프로젝트로 돌아와 몇가지 과정을 수행해야 한다. Github Pages에서는 master 브랜치에서 파일을 호스팅 하기 때문에 개발용 브랜치를 생성해서 개발을 진행하는것이 났다 그래서 아래와 같이 개발 브랜치로 이동 한다.
@@ -27,7 +26,6 @@ Github Pages 통해 배포를 진행하는 경우 `npm install -D gh-pages` 를 
 <img width="958" alt="스크린샷 2021-07-29 오전 1 08 08" src="https://user-images.githubusercontent.com/60437099/127360946-61286056-9d4f-41ab-ab28-006a7f40d41d.png">
 
 그리고 `gatsby-config.js` 로들 어가서 해당 주소 값으로 변경해준다.
-
 <img width="622" alt="3" src="https://user-images.githubusercontent.com/60437099/127361027-e099a2f6-e3ca-4c9f-a728-430b10fe24ad.png">
 
 그리고 `git remote add origin 'https://github.com/[username]/[username].github.io.git` 으로 연결하고 마지막으로`npm run deploy` 명령어를 통해 프로젝트를 배포한다 마지막에 Published가 나오면 성공적으로 배포한것이다. 그럼 해당 Github Pages 레포지토리로 가서 Setting < Pages로 가면 아래 사진과와 같이 배포가 성공적으로 된다. **끝!**
