@@ -1,3 +1,5 @@
+name: gatsby build & deploy
+
 on:
   push:
     branches:
@@ -10,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: packages install
-        run: npm install
-
       - name: gatsby build
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
@@ -24,3 +23,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.API_KEY }}
           GH_PAT: ${{ secrets.API_KEY }}
           BUILD_DIR: 'public/'
+
+          
