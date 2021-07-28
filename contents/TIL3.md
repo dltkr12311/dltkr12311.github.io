@@ -60,7 +60,6 @@ on:
   push:
     branches:
       - dev
-name: build gatsby
 jobs:
   build_gatsby:
     name: build
