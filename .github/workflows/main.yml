@@ -1,16 +1,17 @@
-name: gatsby build & deploy
-
 on:
   push:
     branches:
       - dev
+
+name: gatsby deploy
+
 jobs:
   deploy:
     name: build
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: packages install
         run: npm install
