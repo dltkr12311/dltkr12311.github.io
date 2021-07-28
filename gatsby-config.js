@@ -3,7 +3,7 @@ module.exports = {
     title: `프론트엔드 개발자의 이것저것 블로그`,
     description: `낭비하지 않는 삶`,
     author: `Sak Lee`,
-    siteUrl: 'https://my-website.com',
+    siteUrl: 'https://dltkr12311.github.io/',
   },
   plugins: [
     {
@@ -70,7 +70,7 @@ module.exports = {
           {
             resolve: `gatsby-plugin-canonical-urls`,
             options: {
-              siteUrl: 'https://my-website.com/',
+              siteUrl: 'https://dltkr12311.github.io/',
               stripQueryString: true,
             },
           },
