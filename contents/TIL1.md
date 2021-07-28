@@ -3,7 +3,7 @@ date: '2021-07-26'
 title: 'TIL01 | Intro'
 categories: ['TIL']
 summary: '온보딩 코스 시작'
-thumbnail: 'https://images.velog.io/images/0715yk/post/b0a4b4b6-4ede-4c8c-9a40-02b36e0f5b6f/unnamed.jpg'
+thumbnail: './image.png'
 ---
 
 ## Before
