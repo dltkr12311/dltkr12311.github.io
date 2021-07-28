@@ -13,8 +13,8 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v1
 
-      - name: packages install
-        run: npm install
+      # - name: packages install
+      #   run: npm install
 
       - name: gatsby build
         env:
