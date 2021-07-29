@@ -1,7 +1,7 @@
 ---
 date: '2021-07-29'
-title: 'TIL04 | Git Issue'
-categories: ['TIL', 'Git']
+title: 'TIL04 | 팀프로젝트'
+categories: ['TIL']
 summary: ''
 thumbnail: './image.png'
 ---
