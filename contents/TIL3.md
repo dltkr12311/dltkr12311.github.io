@@ -45,7 +45,7 @@ Github Pages 통해 배포를 진행하는 경우 `npm install -D gh-pages` 를 
 Github Pages의 레파지토리의 Settings > Secrets로 가서 New repostioty secret를 클릭한다.
 
 Name에는 원하는 이름 value값에는 아까 얻은 토큰 값을 넣고 Add secret 버튼을 클릭하면 생성이 된다.
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e803f481-bf7d-4b4f-af52-07a2c251c266/스크린샷_2021-07-29_오전_1.45.20.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e803f481-bf7d-4b4f-af52-07a2c251c266/스크린샷_2021-07-29_오전_1.45.20.png)
+![1](https://user-images.githubusercontent.com/60437099/127521181-2742601f-14d5-48a9-a862-8239ab56f38e.png)
 
 레파지토리에 Actions탭을 누르고 New workflow를 누른다음 set up a workflow yourself를 누른다.
 
@@ -80,15 +80,10 @@ jobs:
 ```
 
 간단하게 흐름을 설명하면 dev브런치에 push를 할때 마다 아래 steps에 정의한 순서대로 actions이 실행된다.
-
 몇가지 단어를 설명하면
-
 `runs-on` : 실행환경
-
 `steps`:정의한 순서대로 실행
-
 `uses` : 어떤 액션을 사용할지 지정함 이미 만들어진 액션을 사용
-
 `env` : ${{ secrets.API_KEY }} → API_KEY는 이전에 자기가 정한 이름을 넣어주면 된다 예를 들어 아까 Name에 GitToken이라고 했으면 ${{ secrets.GitToken }} 라고 하면 된다.
 
 push 하면 `main.yml` 파일이 생성된다 성공하면 아래와 같이 된다.
