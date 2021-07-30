@@ -3,7 +3,7 @@ date: '2021-07-28'
 title: 'TIL03 | 블로그 Github Page 생성 및 Actions으로 자동화 하기'
 categories: ['TIL', 'Git']
 summary: 'gatsby 를 이용해서 블로그를 만들었고 호스팅을 위해 Github Page를 사용하기로 했다.'
-thumbnail: './image.png'
+thumbnail: './TIL.png'
 ---
 
 ## Github Pages
@@ -38,7 +38,7 @@ Github Pages 통해 배포를 진행하는 경우 `npm install -D gh-pages` 를 
 
 먼저 자신의 git > Settings > Developer settings > Personal access tokens에 들어가서 Generate new token을 클릭해서 키를 발급받아야 한다.
 
-![1](https://user-images.githubusercontent.com/60437099/127365862-da7ccba5-82f7-4b11-a5a7-8dd1ef42cfe1.png)29\_오전\_1.40.34.png)
+![1](https://user-images.githubusercontent.com/60437099/127365862-da7ccba5-82f7-4b11-a5a7-8dd1ef42cfe1.png)
 
 토큰을 생성하면 키가 발급되는데 다음에는 확인 할수 없기 때문에 안전한 곳에 저장해야 한다.
 

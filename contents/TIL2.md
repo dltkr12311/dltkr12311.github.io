@@ -3,7 +3,7 @@ date: '2021-07-27'
 title: 'TIL02 | 첫 과제'
 categories: ['TIL']
 summary: '온보딩 코스를 진행하면서 첫 과제를 진행하게 되었다. 혼자 개발하는 방식이 아닌 페어 프로그래밍 방식으로 진행하였다.'
-thumbnail: './image.png'
+thumbnail: './TIL.png'
 ---
 
 ## 시작하기전
