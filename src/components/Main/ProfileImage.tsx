@@ -7,8 +7,8 @@ export interface ProfileImageProps {
 }
 
 const ProfileImageWrapper = styled(Img)`
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   margin-bottom: 30px;
 
