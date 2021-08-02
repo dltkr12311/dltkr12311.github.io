@@ -3,7 +3,7 @@ date: '2021-07-31'
 title: 'TIL06 | Netlify를 이용해 간단하게 배포하기'
 categories: ['TIL', 'Netflify']
 summary: '오늘은 과제 제출 하는 날이다. 이번 과제는 배포까지 해서 제출해야 한다. '
-thumbnail: './TIL.png'
+thumbnail: './images/TIL.png'
 ---
 
 ## 배포

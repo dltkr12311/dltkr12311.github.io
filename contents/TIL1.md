@@ -3,7 +3,7 @@ date: '2021-07-26'
 title: 'TIL01 | Intro'
 categories: ['TIL']
 summary: '최근에 취업준비를 하면서 언제 취업이 될지 모르는 상황속에 점점 다짐했던 마음들과 자신감들이 낮아지면서 방황을 잃어갈때 쯤 원티드에서 주관하는 온보딩 코스를 보았고 뭔가 다시 마음가짐을 바꿔야겠다는 생각과 함께 신청하게 되었다. 오늘부터 프리 온보딩 코스가 시작되었다.'
-thumbnail: './TIL.png'
+thumbnail: './images/TIL.png'
 ---
 
 ## Before

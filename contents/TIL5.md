@@ -3,7 +3,7 @@ date: '2021-07-30'
 title: 'TIL05 | HTML, CSS 기본이지만 중요한 (feat. 랜덤 리스트)'
 categories: ['TIL']
 summary: '오늘 팀 과제가 본격적으로 시작되었다. 내가 맡은 부분은 상품 상세 페이지이다.  html 로 구조를 나눌 태그들을 만들고, css로 레이아웃을 잡았다. 아래와 같이 보더 색을 구분지어서 구역을 나누었다 보기에는 너무 쉬어 보일수 있으나 나름 고민하며 작성 하였다.  '
-thumbnail: './TIL.png'
+thumbnail: './images/TIL.png'
 ---
 
 ## Layout

@@ -6,8 +6,8 @@ type IntroductionProps = ProfileImageProps;
 
 const Background = styled.div`
   width: 100%;
-  background-color: #b3cdd1;
-  background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
+  background-color: #fba8a4;
+  background-image: linear-gradient(315deg, #fba8a4 0%, #dad2f3 74%);
   color: #ffffff;
 `;
 

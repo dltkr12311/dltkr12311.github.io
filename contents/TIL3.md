@@ -3,7 +3,7 @@ date: '2021-07-28'
 title: 'TIL03 | 블로그 Github Page 생성 및 Actions으로 자동화 하기'
 categories: ['TIL', 'Git']
 summary: 'gatsby 를 이용해서 블로그를 만들었고 호스팅을 위해 Github Page를 사용하기로 했다.'
-thumbnail: './TIL.png'
+thumbnail: './images/TIL.png'
 ---
 
 ## Github Pages
