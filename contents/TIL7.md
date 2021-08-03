@@ -1,10 +1,10 @@
 ---
 date: '2021-08-02'
 title: 'TIL07 | React Class VS Function Component'
-categories: ['TIL', 'React']
+categories: ['TIL']
 summary: '오늘 세션을 들으면서 다시 한번 정리하기 위해 작성한다.
 리액트를 사용할때 두 가지 방법으로 코드를 작성할수 있다. 예전에는 클래스형 컴포넌트를 주로 사용했지만 최근에는 함수형 컴포넌트로 많이 사용하고 있다. 페이스북 공식문서에 보면 Hooks을 권장한다. '
-thumbnail: '../images/TIL2.png'
+thumbnail: '../images/TIL2.png'å
 ---
 
 ## Class VS Function Component
