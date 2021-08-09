@@ -35,7 +35,7 @@ const MarkdownRenderer = styled.div`
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   hr + h1,
@@ -88,7 +88,7 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Code Style
   pre[class*='language-'] {
-    margin: 30px 0;
+    margin: 5px 0;
     padding: 15px;
     font-size: 15px;
 
