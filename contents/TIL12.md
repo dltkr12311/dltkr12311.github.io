@@ -1,6 +1,6 @@
 ---
-date: '2021-08-11'
-title: 'TIL11 | 자바스크립트 비동기 처리'
+date: '2021-08-12'
+title: 'TIL12 | 자바스크립트 비동기 처리'
 categories: ['TIL']
 summary: '특정 코드의 실행이 완료될 때까지 기다리지 않고 다음 코드를 먼저 수행한다.'
 thumbnail: './images/TIL3.png'
