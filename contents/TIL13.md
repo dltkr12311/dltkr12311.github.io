@@ -116,3 +116,7 @@ outline, outline-color,outline-style, outline-width, text-decoration ....
   돔과 렌더 트리까지 과정은 똑같다 레이아웃과 페인트 단계에서 GPU가 관여해서 바로 합성 단계로 넘어간다. 이전 작업 보단 더 빠르게 렌더링 될 수 있을 거 같다.
 
 ![22](https://user-images.githubusercontent.com/60437099/129354905-8bb532fc-6b52-47f9-8825-d9a3f96a28bd.png)
+
+### Source
+
+[브라우저는 어떻게 동작하는가? - 네이버D2](https://d2.naver.com/helloworld/59361)
