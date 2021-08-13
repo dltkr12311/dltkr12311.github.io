@@ -77,7 +77,7 @@ const MarkdownRenderer = styled.div`
   // Adjust Horizontal Rule style
   hr {
     border: 1px solid #000000;
-    margin: 100px 0;
+    margin: 20px 0 70px;
   }
 
   // Adjust Link Element Style
@@ -87,6 +87,7 @@ const MarkdownRenderer = styled.div`
   }
 
   // Adjust Code Style
+
   pre[class*='language-'] {
     margin: 5px 0;
     padding: 15px;
@@ -127,7 +128,7 @@ const MarkdownRenderer = styled.div`
     }
 
     hr {
-      margin: 50px 0;
+      margin: 15px 0 40px;
     }
   }
 `;

@@ -8,7 +8,7 @@ thumbnail: './images/TIL3.png'
 
 **비동기란?**
 
-특정 코드의 실행이 완료될 때까지 기다리지 않고 다음 코드를 먼저 수행한다.
+`특정 코드의 실행이 완료될 때까지 기다리지 않고 다음 코드를 먼저 수행한다.`
 
 > 자바스크립트는 싱글 스레드이다. 한 번에 한 작업만 메인 스레드에서 처리될 수 있다. 외부 API에서 데이터를 받아와서 화면에 뿌려 줄 때나, 웹캠에서 비디오에 접근하거나, 디스플레이를 VR 헤드셋으로 브로드캐스팅 하는 작업을 할 때 동기적으로 코드를 사용한다면 네트워크 환경, 다운로드 속도 등의 영향을 받아 전송이 완료되기 전까지 다른 작업은 할 수가 없다(최악이다) 사용자 경험에 있어 좋지 않은 경험을 준다. 그래서 이러한 작업을 비동기로 처리해야 한다.
 
@@ -59,8 +59,8 @@ getData(function (resultData) {
 
 ### **Callback hell**
 
-![callbackhell](https://user-images.githubusercontent.com/60437099/129032611-de40ef34-7f03-45b3-a839-fb13101703b9.jpeg)
-_[사진 출처](https://res.cloudinary.com/practicaldev/image/fetch/s--c0aEZX7m--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b8euo2n7twvgh3dbuatd.jpeg)_</br>
+![callbackhell](https://user-images.githubusercontent.com/60437099/129032611-de40ef34-7f03-45b3-a839-fb13101703b9.jpeg)</br>
+_[사진 출처](https://res.cloudinary.com/practicaldev/image/fetch/s--c0aEZX7m--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b8euo2n7twvgh3dbuatd.jpeg)_
 
 콜백함수로 비동기 함수를 처리하려면 많이 들어봤거나 봤던 코드이지 않을까 싶다 비동기로 처리하려면 콜백안에 콜백으로 계속 작성을 해야한다. 이렇게 되면 지금은 당장 기능이 잘 돌아갈지 모르겠지만 가독성도 많이 떨어지고 유지보수는 포기할꺼 같다....
 **그래서 콜백 지옥을 벗어날 방법이 있긴하다.⬇️⬇️⬇️⬇️**
@@ -200,4 +200,5 @@ console.log(getData());
 [Using promises - MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises)
 
 [Promise - MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
 [async와 await - MDN](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Asynchronous/Async_await)
