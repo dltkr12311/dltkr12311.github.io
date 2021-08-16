@@ -37,7 +37,7 @@ thumbnail: './images/TIL3.png'
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/60437099/129439435-47e50537-0d1b-422b-a9be-163378b6434c.gif)
 
-**위에 순서는 이렇게 진행이 된다.**
+> **위에 순서는 이렇게 진행이 된다.**
 
 - 작성한 코드 순서대로 호출 스택에 쌓인다.
 - `timer()` 는 DOM 이벤트(비동기)는 Web APIs에 넘어간다.(콜백 함수여서 실행될때까지 대기한다)
