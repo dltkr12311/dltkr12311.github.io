@@ -1,6 +1,6 @@
 ---
 date: '2021-08-16'
-title: 'TIL15-1 | this'
+title: 'TIL15 | this'
 categories: ['TIL']
 summary: 'this는 실행컨텍스트가 생성될 때 결정된다. 실행컨텍스트는 함수를 호출할때 생성되므로, this는 함수를 호출한 방법에 의해 결정된다. '
 thumbnail: './images/TIL4.png'
