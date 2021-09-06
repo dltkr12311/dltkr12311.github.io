@@ -4,6 +4,25 @@ import ProfileImage, { ProfileImageProps } from 'components/Main/ProfileImage';
 
 type IntroductionProps = ProfileImageProps;
 
+const Introduction: FunctionComponent<IntroductionProps> = ({
+  profileImage,
+}) => {
+  return (
+    <Background>
+      <Wrapper>
+        <ProfileImage profileImage={profileImage} />
+
+        <div>
+          <SubTitle>안녕하세요!</SubTitle>
+          <Title>프론트엔드 개발자 이삭입니다.</Title>
+        </div>
+      </Wrapper>
+    </Background>
+  );
+};
+
+export default Introduction;
+
 const Background = styled.div`
   width: 100%;
   background: linear-gradient(135deg, #c3ec52 0%, #0ba29d 100%);
@@ -44,22 +63,3 @@ const Title = styled.div`
     font-size: 25px;
   }
 `;
-
-const Introduction: FunctionComponent<IntroductionProps> = ({
-  profileImage,
-}) => {
-  return (
-    <Background>
-      <Wrapper>
-        <ProfileImage profileImage={profileImage} />
-
-        <div>
-          <SubTitle>안녕하세요!</SubTitle>
-          <Title>프론트엔드 개발자 이삭입니다.</Title>
-        </div>
-      </Wrapper>
-    </Background>
-  );
-};
-
-export default Introduction;

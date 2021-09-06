@@ -13,6 +13,22 @@ interface PostHeadProps extends PostHeadInfoProps {
   thumbnail: FluidObject;
 }
 
+const PostHead: FunctionComponent<PostHeadProps> = ({
+  title,
+  date,
+  categories,
+  thumbnail,
+}) => {
+  return (
+    <PostHeadWrapper>
+      <BackgroundImage fluid={thumbnail} alt="thumbnail" />
+      <PostHeadInfo title={title} date={date} categories={categories} />
+    </PostHeadWrapper>
+  );
+};
+
+export default PostHead;
+
 const PostHeadWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -36,19 +52,3 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
     height: 300px;
   }
 `;
-
-const PostHead: FunctionComponent<PostHeadProps> = ({
-  title,
-  date,
-  categories,
-  thumbnail,
-}) => {
-  return (
-    <PostHeadWrapper>
-      <BackgroundImage fluid={thumbnail} alt="thumbnail" />
-      <PostHeadInfo title={title} date={date} categories={categories} />
-    </PostHeadWrapper>
-  );
-};
-
-export default PostHead;

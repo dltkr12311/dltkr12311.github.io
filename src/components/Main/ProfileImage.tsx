@@ -6,6 +6,14 @@ export interface ProfileImageProps {
   profileImage: FluidObject;
 }
 
+const ProfileImage: FunctionComponent<ProfileImageProps> = ({
+  profileImage,
+}) => {
+  return <ProfileImageWrapper fluid={profileImage} alt="프로필 이미지" />;
+};
+
+export default ProfileImage;
+
 const ProfileImageWrapper = styled(Img)`
   width: 150px;
   height: 150px;
@@ -17,11 +25,3 @@ const ProfileImageWrapper = styled(Img)`
     height: 80px;
   }
 `;
-
-const ProfileImage: FunctionComponent<ProfileImageProps> = ({
-  profileImage,
-}) => {
-  return <ProfileImageWrapper fluid={profileImage} alt="프로필 이미지" />;
-};
-
-export default ProfileImage;

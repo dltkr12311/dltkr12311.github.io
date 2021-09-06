@@ -14,12 +14,6 @@ type UtterancesAttributesType = {
   async: string;
 };
 
-const UtterancesWrapper = styled.div`
-  @media (max-width: 768px) {
-    padding: 0 20px;
-  }
-`;
-
 const CommentWidget: FunctionComponent = () => {
   const element = createRef<HTMLDivElement>();
 
@@ -48,3 +42,9 @@ const CommentWidget: FunctionComponent = () => {
 };
 
 export default CommentWidget;
+
+const UtterancesWrapper = styled.div`
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+`;

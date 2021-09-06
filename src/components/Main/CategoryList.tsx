@@ -21,6 +21,27 @@ type GatsbyLinkProps = {
   to: string;
 } & CategoryItemProps;
 
+const CategoryList: FunctionComponent<CategoryListProps> = ({
+  selectedCategory,
+  categoryList,
+}) => {
+  return (
+    <CategoryListWrapper>
+      {Object.entries(categoryList).map(([name, count]) => (
+        <CategoryItem
+          to={`/?category=${name}`}
+          active={name === selectedCategory}
+          key={name}
+        >
+          #{name}({count})
+        </CategoryItem>
+      ))}
+    </CategoryListWrapper>
+  );
+};
+
+export default CategoryList;
+
 //stlye
 const CategoryListWrapper = styled.div`
   display: flex;
@@ -52,24 +73,3 @@ const CategoryItem = styled(({ active, to, ...props }: GatsbyLinkProps) => (
     font-size: 15px;
   }
 `;
-
-const CategoryList: FunctionComponent<CategoryListProps> = ({
-  selectedCategory,
-  categoryList,
-}) => {
-  return (
-    <CategoryListWrapper>
-      {Object.entries(categoryList).map(([name, count]) => (
-        <CategoryItem
-          to={`/?category=${name}`}
-          active={name === selectedCategory}
-          key={name}
-        >
-          #{name}({count})
-        </CategoryItem>
-      ))}
-    </CategoryListWrapper>
-  );
-};
-
-export default CategoryList;

@@ -16,6 +16,35 @@ interface PostItemProps {
   link: string;
 }
 
+const PostItem: FunctionComponent<PostItemProps> = ({
+  title,
+  date,
+  categories,
+  summary,
+  thumbnail: {
+    childImageSharp: { fluid },
+  },
+  link,
+}) => {
+  return (
+    <PostItemWrapper to={link}>
+      <ThumbnailImage fluid={fluid} alt="Post Item Image" />
+      <PostItemContent>
+        <Title>{title}</Title>
+        <Date>{date}</Date>
+        <Category>
+          {categories.map(category => (
+            <CategoryItem key={category}>{category}</CategoryItem>
+          ))}
+        </Category>
+        <Summary>{summary}</Summary>
+      </PostItemContent>
+    </PostItemWrapper>
+  );
+};
+
+export default PostItem;
+
 const PostItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
@@ -89,32 +118,3 @@ const Summary = styled.div`
   font-size: 16px;
   opacity: 0.8;
 `;
-
-const PostItem: FunctionComponent<PostItemProps> = ({
-  title,
-  date,
-  categories,
-  summary,
-  thumbnail: {
-    childImageSharp: { fluid },
-  },
-  link,
-}) => {
-  return (
-    <PostItemWrapper to={link}>
-      <ThumbnailImage fluid={fluid} alt="Post Item Image" />
-      <PostItemContent>
-        <Title>{title}</Title>
-        <Date>{date}</Date>
-        <Category>
-          {categories.map(category => (
-            <CategoryItem key={category}>{category}</CategoryItem>
-          ))}
-        </Category>
-        <Summary>{summary}</Summary>
-      </PostItemContent>
-    </PostItemWrapper>
-  );
-};
-
-export default PostItem;

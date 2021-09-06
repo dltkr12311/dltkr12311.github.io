@@ -5,6 +5,12 @@ interface PostContentProps {
   html: string;
 }
 
+const PostContent: FunctionComponent<PostContentProps> = ({ html }) => {
+  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
+export default PostContent;
+
 const MarkdownRenderer = styled.div`
   // Renderer Style
   display: flex;
@@ -132,9 +138,3 @@ const MarkdownRenderer = styled.div`
     }
   }
 `;
-
-const PostContent: FunctionComponent<PostContentProps> = ({ html }) => {
-  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />;
-};
-
-export default PostContent;
