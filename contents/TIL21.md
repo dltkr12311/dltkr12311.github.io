@@ -1,6 +1,6 @@
 ---
 date: '2021-09-28'
-title: 'IL21 | RN (Xcode build failure)'
+title: 'TIL21 | RN (Xcode build failure)'
 categories: ['TIL']
 summary: '이번에 리액트 네이티브  빌드 하면서 오류가 발생하였다.  몇 시간동안 삽질을 하면서 오류를 해결하였고 나중에 똑같은 원인으로 에러가 났을때 잊지 않기 위해서 기록한다.'
 thumbnail: './images/TIL6.png'

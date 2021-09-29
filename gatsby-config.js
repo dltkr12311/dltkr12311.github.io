@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `프론트엔드 개발자의 이것저것 블로그`,
-    description: `낭비하지 않는 삶`,
+    title: `프론트엔드 개발자의 이것저것`,
+    description: `변화하는 즐거음을 느끼자`,
     author: `Sak Lee`,
     siteUrl: 'https://dltkr12311.github.io/',
   },
