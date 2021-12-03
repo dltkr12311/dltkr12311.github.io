@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.5738f1cae48fb85e21fe.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#ccc;background:none;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><meta name="generator" content="Gatsby 3.4.1"/><title data-react-helmet="true">TIL19 | 타입스크립트(타입 추론, 인터페이스, 제네릭)</title><meta data-react-helmet="true" name="description" content="오늘은 타입스크립트 주제를 가지고 세션을 들었다. 배웠던 개념들을 학습하고자 정리한다. "/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="TIL19 | 타입스크립트(타입 추론, 인터페이스, 제네릭)"/><meta data-react-helmet="true" property="og:description" content="오늘은 타입스크립트 주제를 가지고 세션을 들었다. 배웠던 개념들을 학습하고자 정리한다. "/><meta data-react-helmet="true" property="og:image" content="/static/da67375884c696e55a40f950a426c906/TIL5.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="TIL19 | 타입스크립트(타입 추론, 인터페이스, 제네릭)"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="TIL19 | 타입스크립트(타입 추론, 인터페이스, 제네릭)"/><meta data-react-helmet="true" name="twitter:description" content="오늘은 타입스크립트 주제를 가지고 세션을 들었다. 배웠던 개념들을 학습하고자 정리한다. "/><meta data-react-helmet="true" name="twitter:image" content="/static/da67375884c696e55a40f950a426c906/TIL5.png"/><meta data-react-helmet="true" name="twitter:site" content=""/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="canonical" href="https://dltkr12311.github.io/TIL19/" data-baseprotocol="https:" data-basehost="dltkr12311.github.io"/><link as="script" rel="preload" href="/webpack-runtime-0b52878edf8a1f07550a.js"/><link as="script" rel="preload" href="/framework-c96300279e079ab009d0.js"/><link as="script" rel="preload" href="/app-ae278cbebe42d9072bc7.js"/><link as="script" rel="preload" href="/cb1608f2-a2b9d154d9bc2051201f.js"/><link as="script" rel="preload" href="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a5154407bfc2383a0902.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js"/><link as="fetch" rel="preload" href="/page-data/TIL19/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 13ku56z">.css-13ku56z{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100%;}</style><main class="css-13ku56z e1strnqo0"><style data-emotion="css-global pyt9i0">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{margin:0;padding:0;box-sizing:border-box;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div class="css-1bjn9yo e1opi4mu0 gatsby-image-wrapper" style="position:absolute;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:56%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnElEQVQoz41Tu0oDQRRdGxEbG0tbP0KwmX1MImL8ASuxs7IVbCwMiBoTFUJA0ESDooJWEh9oIyghicZgHlrY2Skm8Y179M7uJJuHYHG5d+7MPXPOmV3l5VJFsyinKDORi0mrLiVVEbJvnRFrs0w5xUzlL0A5RBk5htcrhu8sw2eGoZRy7v8TUDL4uGYITLrQ09uP4aE+3J9ooidBGwDLlY2qDCnTzDKcRnUoHR60dnqgtAxidMQN3DI8J1TnedOeJ4ZVaSRL+kQD72mGm30NXd0DUNo8UNo9mJlwiYue4iqKiYrXpsyK0/zHuArkmRgg3yio9o67MDHmRmzVAO6YYEjnUGBCvmRYASQ/yOzNRQPBKY6gl2N5muMooguQXEzD+baOw7COjQUDER/H1pKB8BzH2jyvlSwB6ab8gYawjyMa4Fj3c6zMclzs6Hg4U7EXMhD1WwC7IUME1ccRnawypZeK80EIVMgpVOV8ZRje0rYFdl/ItSWTJQ2SpY/ElIyWIdnLVxeRqK3tD93JUEW57s+oj/p+k7X1yr/f4Q/zWnvXytqaCwAAAABJRU5ErkJggg==" alt="thumbnail" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source type='image/webp' srcset="/static/da67375884c696e55a40f950a426c906/8444f/TIL5.webp 200w,
+/static/da67375884c696e55a40f950a426c906/42fc5/TIL5.webp 400w,
+/static/da67375884c696e55a40f950a426c906/210fa/TIL5.webp 800w,
+/static/da67375884c696e55a40f950a426c906/8d403/TIL5.webp 1194w" sizes="(max-width: 800px) 100vw, 800px" /><source srcset="/static/da67375884c696e55a40f950a426c906/a9f05/TIL5.png 200w,
+/static/da67375884c696e55a40f950a426c906/23840/TIL5.png 400w,
+/static/da67375884c696e55a40f950a426c906/c019b/TIL5.png 800w,
+/static/da67375884c696e55a40f950a426c906/2def3/TIL5.png 1194w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/da67375884c696e55a40f950a426c906/a9f05/TIL5.png 200w,
+/static/da67375884c696e55a40f950a426c906/23840/TIL5.png 400w,
+/static/da67375884c696e55a40f950a426c906/c019b/TIL5.png 800w,
+/static/da67375884c696e55a40f950a426c906/2def3/TIL5.png 1194w" src="/static/da67375884c696e55a40f950a426c906/c019b/TIL5.png" alt="thumbnail" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><style data-emotion="css w0h6ap">.css-w0h6ap{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-w0h6ap{width:100%;padding:40px 20px;}.css-w0h6ap>div{margin-bottom:20px;}}</style><div class="css-w0h6ap e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">TIL19 | 타입스크립트(타입 추론, 인터페이스, 제네릭)</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>TIL</div><div>2021.08.23.</div></div></div></div><style data-emotion="css ybred2">.css-ybred2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:100px 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-ybred2 p{padding:3px 0;}.css-ybred2 h1,.css-ybred2 h2,.css-ybred2 h3{font-weight:800;margin-bottom:10px;}.css-ybred2 *+h1,.css-ybred2 *+h2,.css-ybred2 *+h3{margin-top:40px;}.css-ybred2 hr+h1,.css-ybred2 hr+h2,.css-ybred2 hr+h3{margin-top:0;}.css-ybred2 h1{font-size:30px;}.css-ybred2 h2{font-size:25px;}.css-ybred2 h3{font-size:20px;}.css-ybred2 img{max-width:768px;}.css-ybred2 blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-ybred2 ol,.css-ybred2 ul{margin-left:20px;padding:5px 0;}.css-ybred2 hr{border:1px solid #000000;margin:20px 0 70px;}.css-ybred2 a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-ybred2 pre[class*='language-']{margin:5px 0;padding:15px;font-size:15px;}.css-ybred2 pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-ybred2 code[class*='language-'],.css-ybred2 pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-ybred2{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-ybred2 h1{font-size:23px;}.css-ybred2 h2{font-size:20px;}.css-ybred2 h3{font-size:17px;}.css-ybred2 img{width:100%;}.css-ybred2 hr{margin:15px 0 40px;}}</style><div class="css-ybred2 e1ijh0y10"><h2>들어가기 전</h2>
+<ul>
+<li>오늘은 타입스크립트 주제를 가지고 세션을 들었다. 배웠던 개념들을 학습하고자 정리한다.</li>
+</ul>
+<h2>Inferene(타입 추론)</h2>
+<ul>
+<li>타입스크립트에서는 타입을 명시적으로 표기하지 않아도 컴파일러가 변수에 할당된 값을 보고 추론해 제공한다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+num <span class="token operator">=</span> <span class="token string">'hello world'</span><span class="token punctuation">;</span> <span class="token comment">// Type 'string' is not assignable to type 'number'.</span></code></pre></div>
+<p>변수 <code class="language-text">num</code> 초기화 하면서 123 숫자를 할당해 <code class="language-text">number</code> 타입이 추론되었고, <code class="language-text">hello world</code> 이라는 <code class="language-text">string</code> 타입의 값은 할당할 수없다고 에러가 난다.</p>
+<p>타입스크립트가 타입을 추론하는 경우는 다음과 같다.</p>
+<ul>
+<li>초기화된 변수</li>
+<li>기본값이 설정된 매개변수</li>
+<li>반환 값이 있는 함수</li>
+</ul>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// 초기화된 변수</span>
+<span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token number">99</span><span class="token punctuation">;</span>
+<span class="token comment">// 기본값이 설정된 매개변수</span>
+<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token operator">:</span> number<span class="token punctuation">,</span> b<span class="token operator">:</span> number <span class="token operator">=</span> <span class="token number">3</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 반환 값이 있는 함수</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2>Interface(인터페이스)</h2>
+<ul>
+<li>자바스크립트에서는 인터페이스가 존재 하지 않지만, 자바와 같은 언어에서는 자주 사용되는 개념이라고 한다. 타입스크립트에서의 인터페이스는 여러 객체를 정의하는 일종의 규칙이며 구조이다.</li>
+<li><code class="language-text">React</code> 에서는 <code class="language-text">state</code> 와 <code class="language-text">props</code> 타입을 정의하는데 주로 사용한다.</li>
+</ul>
+<blockquote>
+<p><code class="language-text">:</code> 나 <code class="language-text">,</code> 혹은 기호를 사용하지 않고 작성할 수 있다.</p>
+</blockquote>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">interface</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<blockquote>
+<p>아래 user2 와 같이 interface에 정의되었지만 작성하지 않으면 에러가 난다.</p>
+</blockquote>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">interface</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> user1<span class="token operator">:</span> IUser <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">99</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+  Type '{ name: string; age: number; email: string; }' 
+	is not assignable to type 'IUser'.
+	Object literal may only specify known properties, 
+	and 'email' does not exist in type 'IUser'.
+*/</span>
+
+<span class="token keyword">let</span> user2<span class="token operator">:</span> IUser <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">99</span><span class="token punctuation">,</span>
+  email<span class="token operator">:</span> <span class="token string">'lee@example.com'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<blockquote>
+<p>아래 코드처럼 객체 리터럴이 아닌 변수에 할당하면 에러는 사라진다. 이유는 타입 추론에 따라 자기만의 타입을 갖게 된다.</p>
+</blockquote>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> user<span class="token operator">:</span> User<span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> user2<span class="token operator">:</span> User <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">99</span><span class="token punctuation">,</span>
+  email<span class="token operator">:</span> <span class="token string">'lee@example.com'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+user <span class="token operator">=</span> user2<span class="token punctuation">;</span></code></pre></div>
+<p><strong>Interface 확장</strong></p>
+<p><code class="language-text">extends</code> 를 사용하여 기존애 정의된 인터페이스를 확장해서 사용할 수 있다.</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">interface</span> <span class="token class-name">UserInfo</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">UserDetailInfo</span> <span class="token keyword">extends</span> <span class="token class-name">UserInfo</span> <span class="token punctuation">{</span>
+  email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  address<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> user<span class="token operator">:</span> UserInfo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token string">'99'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> userDetail<span class="token operator">:</span> UserDetailInfo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">99</span><span class="token punctuation">,</span>
+  email<span class="token operator">:</span> <span class="token string">'Lee@example.com'</span><span class="token punctuation">,</span>
+  address<span class="token operator">:</span> <span class="token string">'서울시 마포구'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<h2>Generic(제네릭)</h2>
+<ul>
+<li>Generic 재사용 목적으로 함수나 클래스 선언 시점이 아닌 사용 시점에 타입을 선언할 수 있다.</li>
+<li>내가 원하는 타입을 자유롭게 지정해서 사용할 수 있다.(타입을 인수로 받아서 사용한다고 생각하면 쉽다)</li>
+</ul>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// T는 Type variable</span>
+<span class="token keyword">function</span> <span class="token generic-function"><span class="token function">makeFunc</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>el<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token generic-function"><span class="token function">makeFunc</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token generic-function"><span class="token function">makeFunc</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token generic-function"><span class="token function">makeFunc</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">boolean</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>타입 추론을 통해 함수 호출할때 타입을 명시적으로 지정하지 않아도 된다.</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">function</span> <span class="token generic-function"><span class="token function">makeFunc</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>el<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">makeFunc</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">makeFunc</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">makeFunc</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>타입추론을 통해 작성하면 가독성 면에서는 좋지만, 나중에 유지 보수나 좀 더 복잡한 상황이라면 예상치 못한 오류가 나올수 있으니 제네릭 타입을 정확히 작성하도록 하자!!</p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Thank You for Visiting My Blog, Have a Good Day 😆<br/>© 2021 Front Developer Sak, Powered By Gatsby.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL19/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-72b219bae196683411be.js"],"app":["/app-ae278cbebe42d9072bc7.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-769ea0ba266bb4382c9e.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-0b2eeeec36ba7215cd84.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-07637cf593e997c992eb.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js"]};/*]]>*/</script><script src="/polyfill-72b219bae196683411be.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js" async=""></script><script src="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a5154407bfc2383a0902.js" async=""></script><script src="/cb1608f2-a2b9d154d9bc2051201f.js" async=""></script><script src="/app-ae278cbebe42d9072bc7.js" async=""></script><script src="/framework-c96300279e079ab009d0.js" async=""></script><script src="/webpack-runtime-0b52878edf8a1f07550a.js" async=""></script></body></html>

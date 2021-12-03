@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.5738f1cae48fb85e21fe.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#ccc;background:none;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><meta name="generator" content="Gatsby 3.4.1"/><title data-react-helmet="true">TIL11 | 클린 코드</title><meta data-react-helmet="true" name="description" content="오늘 세션에서 리액트에서 좋은 코드란? 주제로 진행이 되었다. 세션에서 나온 개념들과 자바스크립트 클린코드를 참고하여서 정리해 보았다."/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="TIL11 | 클린 코드"/><meta data-react-helmet="true" property="og:description" content="오늘 세션에서 리액트에서 좋은 코드란? 주제로 진행이 되었다. 세션에서 나온 개념들과 자바스크립트 클린코드를 참고하여서 정리해 보았다."/><meta data-react-helmet="true" property="og:image" content="/static/7fc7289a6fb05ff85be8326dc5088053/TIL3.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="TIL11 | 클린 코드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="TIL11 | 클린 코드"/><meta data-react-helmet="true" name="twitter:description" content="오늘 세션에서 리액트에서 좋은 코드란? 주제로 진행이 되었다. 세션에서 나온 개념들과 자바스크립트 클린코드를 참고하여서 정리해 보았다."/><meta data-react-helmet="true" name="twitter:image" content="/static/7fc7289a6fb05ff85be8326dc5088053/TIL3.png"/><meta data-react-helmet="true" name="twitter:site" content=""/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="canonical" href="https://dltkr12311.github.io/TIL11/" data-baseprotocol="https:" data-basehost="dltkr12311.github.io"/><link as="script" rel="preload" href="/webpack-runtime-0b52878edf8a1f07550a.js"/><link as="script" rel="preload" href="/framework-c96300279e079ab009d0.js"/><link as="script" rel="preload" href="/app-ae278cbebe42d9072bc7.js"/><link as="script" rel="preload" href="/cb1608f2-a2b9d154d9bc2051201f.js"/><link as="script" rel="preload" href="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a5154407bfc2383a0902.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js"/><link as="fetch" rel="preload" href="/page-data/TIL11/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 13ku56z">.css-13ku56z{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100%;}</style><main class="css-13ku56z e1strnqo0"><style data-emotion="css-global pyt9i0">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{margin:0;padding:0;box-sizing:border-box;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div class="css-1bjn9yo e1opi4mu0 gatsby-image-wrapper" style="position:absolute;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:56%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABrUlEQVQoz41Sy07CUBDlB4wKBuSlKxMVUCkoUAsFSRSDryhU3gEfFBVWJn6HKxNXxpXGxEjiIyQmRnduXOjCz+nRewu1RVEXk9u503tmzjmj81h5dArGElJOl4HFhImDxybnrRqtW3nJYw3BY+El3V9gE0YOk/YwliJpRMYXMNbHfm/4H0AS7v4guOEYDk+Ocfl8i7PHKxTSOxTUawt3nrCdAgmvPYzRbh82ClXcvT/g/KmOm7d7HJ2fwG0OtjeXmu8lnVontzkEr42nOhFAMmGUWcJp4wLXr/eovzRQrR1g3DiNyYGIMiVjCUmtU6fWYmpwBk59AGMGFi5DAC59gBpREfdRyu0hFljDSNcUHD0+OPV+OHr8slHNCRVAKr6JQ3p1CxuFGo1idhfL0QxW5/LgXXHEgwL9zqxtIy+ISK1sIr9eQS5Z1lJWAxIX8+sisokysskyCqkdzLMJsEOzSMaLyCa2KYCwUISwWEJOEGlTxixTVjRUVsTEyXR6/TRITvQiJhAJyB2hSetNykSeHym3QInQrdC4rrrX/GP7MkVDWQ3aacl/yWXAzz38AIgPcl37MB6jAAAAAElFTkSuQmCC" alt="thumbnail" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source type='image/webp' srcset="/static/7fc7289a6fb05ff85be8326dc5088053/8444f/TIL3.webp 200w,
+/static/7fc7289a6fb05ff85be8326dc5088053/42fc5/TIL3.webp 400w,
+/static/7fc7289a6fb05ff85be8326dc5088053/210fa/TIL3.webp 800w,
+/static/7fc7289a6fb05ff85be8326dc5088053/8d403/TIL3.webp 1194w" sizes="(max-width: 800px) 100vw, 800px" /><source srcset="/static/7fc7289a6fb05ff85be8326dc5088053/a9f05/TIL3.png 200w,
+/static/7fc7289a6fb05ff85be8326dc5088053/23840/TIL3.png 400w,
+/static/7fc7289a6fb05ff85be8326dc5088053/c019b/TIL3.png 800w,
+/static/7fc7289a6fb05ff85be8326dc5088053/2def3/TIL3.png 1194w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/7fc7289a6fb05ff85be8326dc5088053/a9f05/TIL3.png 200w,
+/static/7fc7289a6fb05ff85be8326dc5088053/23840/TIL3.png 400w,
+/static/7fc7289a6fb05ff85be8326dc5088053/c019b/TIL3.png 800w,
+/static/7fc7289a6fb05ff85be8326dc5088053/2def3/TIL3.png 1194w" src="/static/7fc7289a6fb05ff85be8326dc5088053/c019b/TIL3.png" alt="thumbnail" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><style data-emotion="css w0h6ap">.css-w0h6ap{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-w0h6ap{width:100%;padding:40px 20px;}.css-w0h6ap>div{margin-bottom:20px;}}</style><div class="css-w0h6ap e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">TIL11 | 클린 코드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>TIL</div><div>2021.08.09.</div></div></div></div><style data-emotion="css ybred2">.css-ybred2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:100px 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-ybred2 p{padding:3px 0;}.css-ybred2 h1,.css-ybred2 h2,.css-ybred2 h3{font-weight:800;margin-bottom:10px;}.css-ybred2 *+h1,.css-ybred2 *+h2,.css-ybred2 *+h3{margin-top:40px;}.css-ybred2 hr+h1,.css-ybred2 hr+h2,.css-ybred2 hr+h3{margin-top:0;}.css-ybred2 h1{font-size:30px;}.css-ybred2 h2{font-size:25px;}.css-ybred2 h3{font-size:20px;}.css-ybred2 img{max-width:768px;}.css-ybred2 blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-ybred2 ol,.css-ybred2 ul{margin-left:20px;padding:5px 0;}.css-ybred2 hr{border:1px solid #000000;margin:20px 0 70px;}.css-ybred2 a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-ybred2 pre[class*='language-']{margin:5px 0;padding:15px;font-size:15px;}.css-ybred2 pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-ybred2 code[class*='language-'],.css-ybred2 pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-ybred2{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-ybred2 h1{font-size:23px;}.css-ybred2 h2{font-size:20px;}.css-ybred2 h3{font-size:17px;}.css-ybred2 img{width:100%;}.css-ybred2 hr{margin:15px 0 40px;}}</style><div class="css-ybred2 e1ijh0y10"><h2><strong>들어가기전</strong></h2>
+<p>오늘 세션에서 <strong>리액트에서 좋은 코드란?</strong> 주제로 진행이 되었다. 세션에서 나온 개념들과 <a href="https://github.com/qkraudghgh/clean-code-javascript-ko" target="_blank" rel="nofollow">자바스크립트 클린코드</a>를 참고하여서 정리해 보았다.</p>
+<h2>변수(Variables)</h2>
+<h3><strong>의미있는 변수명 사용하기</strong></h3>
+<p><strong>bad:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> info <span class="token operator">=</span> <span class="token punctuation">{</span>
+	name<span class="token operator">:</span> <span class="token string">"John Mayer"</span><span class="token punctuation">,</span>
+	age<span class="token operator">:</span> <span class="token string">"44"</span><span class="token punctuation">,</span>
+	job<span class="token operator">:</span> <span class="token string">"singer songwriter"</span>
+</code></pre></div>
+<p><strong>good:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'John Mayer'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token string">'44'</span><span class="token punctuation">,</span>
+  job<span class="token operator">:</span> <span class="token string">'singer songwriter'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>위와 같이 info라는 변수명을 사용해도 의미가 조금은 들어갔지만 가독성이 좋지 않다. user라는 변수명을 사용하면 가독성이 더 좋아 보인다.</p>
+<h3><strong>자신만 알아보 수 있는 작명을 피하자</strong></h3>
+<p><strong>bad:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> brands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'나이키'</span><span class="token punctuation">,</span> <span class="token string">'아디다스'</span><span class="token punctuation">,</span> <span class="token string">'루이비통'</span><span class="token punctuation">,</span> <span class="token string">'꼼데가르송'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+brands<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">a</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>good:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> brands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'나이키'</span><span class="token punctuation">,</span> <span class="token string">'아디다스'</span><span class="token punctuation">,</span> <span class="token string">'루이비통'</span><span class="token punctuation">,</span> <span class="token string">'꼼데가르송'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+brands<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">brand</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>brand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>위와 같이 a라고 자기가 알아보는 변수명을 사용하지 말고 누구나 알 수 있는 변수명으로 사용하자</p>
+<h2>함수(Function)</h2>
+<h3><strong>함수 인자는 2개이 이하가 이상적이다.</strong></h3>
+<ul>
+<li>2개 이상의 인자를 가진 함수를 사용한다면 그 함수에게 너무 많은 역할을 만든 것이다. 그렇지 않다면 대부분 상위 객체는 1개만으로 충분하다.</li>
+<li>많아지더라도 객체로 처리한 다음 구조 분해 할당으로 가져오면 좋다.</li>
+</ul>
+<h3><strong>함수는 하나의 기능만 해야한다.</strong></h3>
+<ul>
+<li>함수가 1개 이상의 행동을 한다면 작성, 테스트 및 이해하는게 어려워 진다.</li>
+</ul>
+<h3><strong>함수는 단일 행동을 추상화 해야한다.</strong></h3>
+<p><strong>bad:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">parseBetterJSAlternative</span><span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token constant">REGEXES</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> statements <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> tokens <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token constant">REGEXES</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter"><span class="token constant">REGEX</span></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    statements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">statement</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> ast <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  tokens<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">token</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// lex...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  ast<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">node</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// parse...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>good:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">tokenize</span><span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token constant">REGEXES</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> statements <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> tokens <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token constant">REGEXES</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter"><span class="token constant">REGEX</span></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    statements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">statement</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      tokens<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> tokens<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">lexer</span><span class="token punctuation">(</span><span class="token parameter">tokens</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> ast <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  tokens<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">token</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    ast<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> ast<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">parseBetterJSAlternative</span><span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> tokens <span class="token operator">=</span> <span class="token function">tokenize</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> ast <span class="token operator">=</span> <span class="token function">lexer</span><span class="token punctuation">(</span>tokens<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ast<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">node</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// parse...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>위와 같이 하나의 함수에 다양한 기능들을 하는 것보다 함수들을 나누고 의미있는 이름으로 짓는다면 재사용이 가능하고 가독성이 좋다.</p>
+<h3><strong>중복된 코드를 작성하지 말자</strong></h3>
+<ul>
+<li>중복된 코드가 있을 경우 수정해야 할 일이 있다면 다 바꿔주어야 한다. 하지만 하나의 기능이 있다면 일일이 찾아다니 않고 한번만 변경해주면 된다.</li>
+<li>중복 코드를 제거한다는 것은 하나의 함수, 모듈, 클래스를 사용하여 여러가지 사소한 차이점을 처리 할 수 있는 추상화를 만드는 것을 의미한다.</li>
+</ul>
+<h3><strong>매개변수로 플래그를 사용하지 말자.</strong></h3>
+<p><code class="language-text">플래란? 프로그래밍 언어 용어로서, 특정 동작을 수행할지 말지 결정하는 변수를 플래그라고 부른다. - 나무위키 -</code></p>
+<ul>
+<li>플래그를 사용하는 것 자체가 해당 함수가 한가지 이상의 역할을 하고 있다는 뜻이다.</li>
+</ul>
+<p><strong>bad:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">createFile</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> temp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>temp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		fs<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./temp/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>'
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		fs<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>good:</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">createFile</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fs<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">createTempFile</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">createFile</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./temp/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>위와 같이 함수를 나누어서 사용하자!!</p>
+<h3>전역 함수를 사용하지 말자.</h3>
+<hr>
+<h2>클린 코드 적용해보기</h2>
+<ol>
+<li>담대하게 기존 코드 수정하기
+<ol>
+<li>두려워하지 말고 기존 코드를 씹고 뜯고 맛보고 즐기자</li>
+</ol>
+</li>
+<li>큰 그림 보는 연습하기
+<ol>
+<li>그 때는 맞고 지금은 틀리다 기능 추가 자체는 클린해도, 전체적으로는 어지러울 수 있다.</li>
+</ol>
+</li>
+<li>팀과 함께 공감대 형성하기
+<ol>
+<li>코드에 정답은 없다 명시적으로 이야기를 하는 시간이 필요하다</li>
+</ol>
+</li>
+<li>문서로 적어 보기
+<ol>
+<li>글로 적어야 명확해 진다.
+<ol>
+<li>향후 어떤 점에서 위험할 수 있는지</li>
+<li>어떻게 개선할 수 있는지</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>클린 코드의 오해</h2>
+<ol>
+<li>클린 코드는 ≠ 짧은 코드가 아니다 == 원하는 로직을 빠르게 찾을 수 있는 코드이다.</li>
+<li>클린코드를 위해 지금 코드를 다 뒤짚을 수 없다.</li>
+<li>지저분한 코드가 있어야 깨끗한 코드도 있는 법. 방망이 깎는 노인처럼 지속적으로 다음어야 한다.</li>
+<li>리팩토링은 추가로 시간을 들이는 task가 아니다. 매일 보일 때마다 해야 한다.</li>
+</ol>
+<h3>Source</h3>
+<ul>
+<li><a href="https://github.com/qkraudghgh/clean-code-javascript-ko#%EC%86%8C%EA%B0%9Cintroduction" target="_blank" rel="nofollow">자바스크립트 - 클린코드</a></li>
+<li><a href="https://youtu.be/edWbHp_k_9Y" target="_blank" rel="nofollow">토스 - 클린코드</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Thank You for Visiting My Blog, Have a Good Day 😆<br/>© 2021 Front Developer Sak, Powered By Gatsby.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL11/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-72b219bae196683411be.js"],"app":["/app-ae278cbebe42d9072bc7.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-769ea0ba266bb4382c9e.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-0b2eeeec36ba7215cd84.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-07637cf593e997c992eb.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js"]};/*]]>*/</script><script src="/polyfill-72b219bae196683411be.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js" async=""></script><script src="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a5154407bfc2383a0902.js" async=""></script><script src="/cb1608f2-a2b9d154d9bc2051201f.js" async=""></script><script src="/app-ae278cbebe42d9072bc7.js" async=""></script><script src="/framework-c96300279e079ab009d0.js" async=""></script><script src="/webpack-runtime-0b52878edf8a1f07550a.js" async=""></script></body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.5738f1cae48fb85e21fe.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#ccc;background:none;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><meta name="generator" content="Gatsby 3.4.1"/><title data-react-helmet="true">TIL15 | this</title><meta data-react-helmet="true" name="description" content="this는 실행컨텍스트가 생성될 때 결정된다. 실행컨텍스트는 함수를 호출할때 생성되므로, this는 함수를 호출한 방법에 의해 결정된다. "/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="TIL15 | this"/><meta data-react-helmet="true" property="og:description" content="this는 실행컨텍스트가 생성될 때 결정된다. 실행컨텍스트는 함수를 호출할때 생성되므로, this는 함수를 호출한 방법에 의해 결정된다. "/><meta data-react-helmet="true" property="og:image" content="/static/67f5b307b7781e511046c7fb490c5e0b/TIL4.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="TIL15 | this"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="TIL15 | this"/><meta data-react-helmet="true" name="twitter:description" content="this는 실행컨텍스트가 생성될 때 결정된다. 실행컨텍스트는 함수를 호출할때 생성되므로, this는 함수를 호출한 방법에 의해 결정된다. "/><meta data-react-helmet="true" name="twitter:image" content="/static/67f5b307b7781e511046c7fb490c5e0b/TIL4.png"/><meta data-react-helmet="true" name="twitter:site" content=""/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="canonical" href="https://dltkr12311.github.io/TIL15/" data-baseprotocol="https:" data-basehost="dltkr12311.github.io"/><link as="script" rel="preload" href="/webpack-runtime-0b52878edf8a1f07550a.js"/><link as="script" rel="preload" href="/framework-c96300279e079ab009d0.js"/><link as="script" rel="preload" href="/app-ae278cbebe42d9072bc7.js"/><link as="script" rel="preload" href="/cb1608f2-a2b9d154d9bc2051201f.js"/><link as="script" rel="preload" href="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a5154407bfc2383a0902.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js"/><link as="fetch" rel="preload" href="/page-data/TIL15/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 13ku56z">.css-13ku56z{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100%;}</style><main class="css-13ku56z e1strnqo0"><style data-emotion="css-global pyt9i0">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{margin:0;padding:0;box-sizing:border-box;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div class="css-1bjn9yo e1opi4mu0 gatsby-image-wrapper" style="position:absolute;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:56%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABj0lEQVQoz4VTy04CQRDk4ySAgssCCoiJgLxkQQGFYJCHgotB1PhEDQkH/QTvnvRi4kmjMcpBPSkHwgdsmR4ZAgh46EzvTHd1Vc2symgLYVgIVgmiLQTD1AJ0og+T08HOfm9dSBGslEuKahgQbxo3++GYTyC2WoZ1LoYJs/8P6L+AFKI9zMDC8SLuHz5Q/2zh5u4F7mAaektgNMNuRjxMM4tQG1yoXlzhq6ngud5AowWUDy+hNrjZeVe90u5XVByIVvKImHFAYhJalvH09o3X9yaubx/h9KdYHZ3zWsEqKXxVdfthdixBJ3oxbvJBZ/JBI3hgmY0gtXHEpJJ/Y3oXtEYvtEYPNEYPuzDOsANIQWzW8seQd2uQd2rIl6qIJrfZZdhdK4gkS0jmDpDZrCBXPGNDaM3Kp72SOSBNcgZSrIiaMnIF61vnCEYLsLviSKT3kC6cMIBkdp8F5TSUS+54yCUTKMnslkPMyTN6h2y/fU6yKSd7BkrmoGQ0j/5nNCx6GP4m0sA/oH/YiO82oKT8AA9H5ApmiSGpAAAAAElFTkSuQmCC" alt="thumbnail" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source type='image/webp' srcset="/static/67f5b307b7781e511046c7fb490c5e0b/8444f/TIL4.webp 200w,
+/static/67f5b307b7781e511046c7fb490c5e0b/42fc5/TIL4.webp 400w,
+/static/67f5b307b7781e511046c7fb490c5e0b/210fa/TIL4.webp 800w,
+/static/67f5b307b7781e511046c7fb490c5e0b/8d403/TIL4.webp 1194w" sizes="(max-width: 800px) 100vw, 800px" /><source srcset="/static/67f5b307b7781e511046c7fb490c5e0b/a9f05/TIL4.png 200w,
+/static/67f5b307b7781e511046c7fb490c5e0b/23840/TIL4.png 400w,
+/static/67f5b307b7781e511046c7fb490c5e0b/c019b/TIL4.png 800w,
+/static/67f5b307b7781e511046c7fb490c5e0b/2def3/TIL4.png 1194w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="/static/67f5b307b7781e511046c7fb490c5e0b/a9f05/TIL4.png 200w,
+/static/67f5b307b7781e511046c7fb490c5e0b/23840/TIL4.png 400w,
+/static/67f5b307b7781e511046c7fb490c5e0b/c019b/TIL4.png 800w,
+/static/67f5b307b7781e511046c7fb490c5e0b/2def3/TIL4.png 1194w" src="/static/67f5b307b7781e511046c7fb490c5e0b/c019b/TIL4.png" alt="thumbnail" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><style data-emotion="css w0h6ap">.css-w0h6ap{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-w0h6ap{width:100%;padding:40px 20px;}.css-w0h6ap>div{margin-bottom:20px;}}</style><div class="css-w0h6ap e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">TIL15 | this</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>TIL</div><div>2021.08.16.</div></div></div></div><style data-emotion="css ybred2">.css-ybred2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:100px 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-ybred2 p{padding:3px 0;}.css-ybred2 h1,.css-ybred2 h2,.css-ybred2 h3{font-weight:800;margin-bottom:10px;}.css-ybred2 *+h1,.css-ybred2 *+h2,.css-ybred2 *+h3{margin-top:40px;}.css-ybred2 hr+h1,.css-ybred2 hr+h2,.css-ybred2 hr+h3{margin-top:0;}.css-ybred2 h1{font-size:30px;}.css-ybred2 h2{font-size:25px;}.css-ybred2 h3{font-size:20px;}.css-ybred2 img{max-width:768px;}.css-ybred2 blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-ybred2 ol,.css-ybred2 ul{margin-left:20px;padding:5px 0;}.css-ybred2 hr{border:1px solid #000000;margin:20px 0 70px;}.css-ybred2 a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-ybred2 pre[class*='language-']{margin:5px 0;padding:15px;font-size:15px;}.css-ybred2 pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-ybred2 code[class*='language-'],.css-ybred2 pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-ybred2{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-ybred2 h1{font-size:23px;}.css-ybred2 h2{font-size:20px;}.css-ybred2 h3{font-size:17px;}.css-ybred2 img{width:100%;}.css-ybred2 hr{margin:15px 0 40px;}}</style><div class="css-ybred2 e1ijh0y10"><h3>정의</h3>
+<ul>
+<li>this는 실행컨텍스트가 생성될 때 결정된다. 실행컨텍스트는 함수를 호출할때 생성되므로, <strong>this는 함수를 호출한 방법에 의해 결정된다.</strong></li>
+<li>this는 기본적으로 전역 객체를 참조한다.</li>
+<li>this의 값은 this를 사용하는 해당 함수를 어떻게 실행하느냐에 따라 바뀐다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> test <span class="token operator">=</span> <span class="token punctuation">{</span>
+  prop<span class="token operator">:</span> <span class="token number">34</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">func</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prop<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>test<span class="token punctuation">.</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// output:34</span>
+
+<span class="token comment">//window</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> window<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span></code></pre></div>
+<p><strong>예시</strong></p>
+<ol>
+<li>아버지: 나는 허리가 아프다. ( 나 === 아버지 )</li>
+<li>어머니 : 나는 어깨가 아프다. (나 === 어머니 )</li>
+<li>삼촌: 나는 머리가 아프다. ( 나 === 삼촌 )</li>
+</ol>
+<blockquote>
+<p>자바스크립트에서 this는 여기서 ‘나’라는 단어와 비슷 하다 어떤 문맥이냐에 따라서 그 의미(값)가 바뀐다.</p>
+</blockquote>
+<h3>this를 사용하는 4가지 방법</h3>
+<p><strong>1. reguler function call (일반 실행 함수)</strong></p>
+<ul>
+<li>함수와 메서드는 모두 function 키워드로 함수를 정의한것을 의미한다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token comment">// 1-1.</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//this === global object(브라우저상에서는 window객체)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">////////// 1-2. ///////////</span>
+
+<span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'lee'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'kim'</span><span class="token punctuation">;</span>
+  <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//outpiut: lee</span>
+
+<span class="token comment">//////// 1-3. **use strict을 사용할 경우 ////////**</span>
+<span class="token punctuation">(</span><span class="token string">'use strict'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'lee'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: this === undefined</span></code></pre></div>
+<p><strong>2. Dot Notation (점 방식)</strong></p>
+<ul>
+<li>메서드는 객체의 프로퍼티로 함수가 정의되어야 한다.</li>
+<li>객체의 프로퍼티에 할당된 함수를 호출하면, this는 해당 객체를 바라본다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token comment">//2-1.</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">foo</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+lee<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 28</span>
+
+<span class="token comment">//2-2.</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+  foo<span class="token operator">:</span> foo<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> kim <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">21</span><span class="token punctuation">,</span>
+  foo<span class="token operator">:</span> foo<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+lee<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 28</span>
+kim<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 21</span>
+
+<span class="token comment">//2-3.</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">foo</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> kim <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">21</span><span class="token punctuation">,</span>
+  foo<span class="token operator">:</span> lee<span class="token punctuation">.</span>foo<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> foo <span class="token operator">=</span> lee<span class="token punctuation">.</span>foo<span class="token punctuation">;</span>
+
+lee<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 28</span>
+kim<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 21</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 100</span></code></pre></div>
+<p><strong>3.Function.prototype.call, Function.prototype.apply, Function.prototype.bind</strong></p>
+<ul>
+<li>this의 값을 한 문맥에서 다른 문맥으로 넘기려면 다음 <code class="language-text">call()</code> 이나 <code class="language-text">apply()</code> 를 사용해야 한다.</li>
+<li>call,apply의 첫번째 인자는 this로 사용할 객체이다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token comment">//3-1.</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> kim <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">21</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: 100</span>
+
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>lee<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:28</span>
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>kim<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:21</span>
+
+<span class="token comment">//3-2</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> kim <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">21</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:100</span>
+
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>lee<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:28</span>
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>kim<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:21</span>
+
+<span class="token comment">//3-3.</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:100</span>
+
+<span class="token keyword">let</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>lee<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//바로 실행되는것이 아니라 대기하고 있다가 할당한 변수가 실행되면 출력이 된다.</span>
+
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output:28</span></code></pre></div>
+<p><strong>4. “new” Keyword (생성자 함수)</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token comment">//4-1.</span>
+<span class="token keyword">function</span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//new를 사용하면 새로운 빈 객체가 생성되고 this는 새로운 생성자 함수에 this의 값이 담긴다.</span>
+<span class="token comment">// return을 따로 명시하지 않아도 자바스크립트 엔진에서 return을 알아서 해준다.</span>
+<span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: foo:{}</span>
+
+<span class="token comment">//4-2.</span>
+<span class="token keyword">function</span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'this 공부중...'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> thisReult <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>thisResult<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// output: foo {name: "this 공부중..."}</span>
+
+<span class="token comment">//4-3.</span>
+<span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> leeCoding <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'lee coding'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>leeCoding<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//output: Person {name: "lee coding"}</span>
+
+<span class="token comment">//4-4.</span>
+<span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>color <span class="token operator">=</span> color<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> lee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'lee coding'</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> kim <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'kim coding'</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token string">'orange'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+lee<span class="token punctuation">;</span> <span class="token comment">//output: Person {name: "lee coding", age: 28, color: "red"}</span>
+kim<span class="token punctuation">;</span> <span class="token comment">//output: Person {name: "kim coding", age: 21, color: "orange"}</span></code></pre></div>
+<h3><strong>화살표 함수(Arrow Function)(ES6 Syntax)</strong></h3>
+<ul>
+<li>화살표 함수는 함수를 선언할때 this에 바인딩할 객체가 정적으로 결정된다. 화살표 함수는 언제나 상위 스코프의 this를 가리킨다.(lexical this)</li>
+<li>화살표 함수는 call, apply, bind를 이용하여 변경할수 없다.</li>
+<li>abbEventListener함수의 콜백 함수를 화살표 함수로 정의하면 this가 전역 객체인 window를 가리킨다.
+이벤트 함수 내의 this를 정의하고 싶으면 일반 함수로 작성해야 한다.</li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Thank You for Visiting My Blog, Have a Good Day 😆<br/>© 2021 Front Developer Sak, Powered By Gatsby.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/TIL15/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-72b219bae196683411be.js"],"app":["/app-ae278cbebe42d9072bc7.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-769ea0ba266bb4382c9e.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-0b2eeeec36ba7215cd84.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-07637cf593e997c992eb.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js"]};/*]]>*/</script><script src="/polyfill-72b219bae196683411be.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-5d17160bdf0fd62aeba1.js" async=""></script><script src="/d0dcf9c1039535d44ee74defc829dfbf62dac3c5-a5154407bfc2383a0902.js" async=""></script><script src="/cb1608f2-a2b9d154d9bc2051201f.js" async=""></script><script src="/app-ae278cbebe42d9072bc7.js" async=""></script><script src="/framework-c96300279e079ab009d0.js" async=""></script><script src="/webpack-runtime-0b52878edf8a1f07550a.js" async=""></script></body></html>
