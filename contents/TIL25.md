@@ -3,7 +3,7 @@ date: '2022-10-22'
 title: 'git reset --hard'
 categories: ['TIL']
 summary: '기능 개발을 마치고 커밋을 할 상황이 되었다. 모두 stage에 올리지 않고 한 개의 변경 사항만 stage에 올린 상태에서 commit을 하였고 다시 되돌리려고...'
-thumbnail: './images/TIL1.png'
+thumbnail: './images/TIL6.png'
 ---
 
 ### Git을 잘 알고 활용하자...
